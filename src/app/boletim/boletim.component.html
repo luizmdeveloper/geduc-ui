@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <h1>Boletim</h1>
+    </div>
+    <div class="ui-g-12">
+      <p-dataTable [value]="alunos" [responsive]="true">
+        <p-column field="matricula" header="Matrícula" styleClass="col-matricula"></p-column>
+        <p-column field="nome" header="Aluno"></p-column>
+        <p-column header="Imprimir" styleClass="col-acoes">
+          <ng-template let-aluno="rowData" pTemplate="body">
+            <button type="button" pButton [disabled]="!imprimir" (click)="imprimirBoletim(aluno)" icon="fa-print"></button>
+          </ng-template>
+        </p-column>
+      </p-dataTable>
+    </div>
+</div>

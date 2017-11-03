@@ -1,0 +1,26 @@
+<title>Geduc - login</title>
+<div id="login-body">
+  <div id="login-wrapper">
+    <img class="logo" src="./assets/logo.png">
+    <div id="login-container">
+      <span class="login-title">Autenticação</span>
+      <form #f="ngForm" autocomplete="off">
+        <div class="ui-g ui-fluid">
+          <div class="ui-g-12">
+            <input pInputText type="text" placeholder="login" ngModel #login name="login" required>
+          </div>
+          <div class="ui-g-12">
+            <input pInputText type="password" placeholder="senha" ngModel #senha name="senha" required/>
+          </div>
+          <div class="ui-g-12">
+            <button pButton type="submit" label="Entrar" [disabled]="f.invalid" (click)="logar(login.value, senha.value)"></button>
+          <div class="ui-g-12">
+            <a routerLink="/esquecer" href="#">Esqueceu sua senha?</a>
+          </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="login-footer">© Copyright © 2017 | Desenvolvido pela Info Rio Sistemas Ltda. Todos os direitos reservados.</div>
+  </div>
+</div>

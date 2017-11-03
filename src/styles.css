@@ -1,0 +1,103 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+  margin : 0;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  color: #404C51
+}
+
+@media(min-width: 1200px){
+  .container{
+    width: 1170px;
+    margin: 0 auto;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  text-decoration: underline;
+}
+
+/**
+* Label
+*/
+.label{
+  font-weight: bold;
+}
+
+.label-input{
+  display: block;
+}
+
+
+/**
+* Colunas tabela
+*/
+.col-acoes{
+  width: 90px;
+
+  text-align: center;
+}
+
+.col-matricula{
+  width: 100px;
+
+  text-align: center;
+}
+
+/*
+* Imagem reponsive
+*/
+.logo{
+  height: 50px;
+}
+
+.login-footer {
+  margin-top: 50px;
+
+  color: #00005C;
+  font-size: 14px;
+}
+
+.login-title{
+  display: block;
+  margin-bottom: 10px;
+
+  font-size: 20px;
+}
+
+#login-wrapper{
+  width: 400px;
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+#login-body{
+  height: 100%;
+  margin: 0;
+  padding: 100px 0 0 0;
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  font-family: "latoregular", "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+#login-container{
+  margin-top: 20px;
+  box-sizing: border-box;
+  padding: 2em;
+  height: 230px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+
+  background-color: #ffffff;
+  text-align: center;
+
+  color: #4f575b;
+}
