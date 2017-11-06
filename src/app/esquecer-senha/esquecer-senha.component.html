@@ -8,10 +8,10 @@
         <p-message severity="info" text="Insira o seu login abaixo e nós iremos enviar-lhe uma nova senha!"></p-message>
         <div class="ui-g ui-fluid">
           <div class="ui-g-12">
-            <input pInputText type="email" placeholder="login" ngModel #email name="email" required>
+            <input pInputText type="email" placeholder="login" ngModel #email name="email" required [email]="true">
           </div>
           <div class="ui-g-12">
-            <button pButton type="submit" label="Enviar" [disabled]="f.invalid"></button>
+            <button pButton type="submit" label="Enviar" [disabled]="f.invalid" (click)="enviar(email.value)"></button>
             <div class="ui-g-12">
               <a routerLink="/login">Voltar para o login</a>
             </div>

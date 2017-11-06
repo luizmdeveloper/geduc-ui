@@ -1,6 +1,7 @@
 <title>Geduc - login</title>
 <div id="login-body">
   <div id="login-wrapper">
+    <p-messages [(value)]="msgs" [hidden]="msgs === []"></p-messages>
     <img class="logo" src="./assets/logo.png">
     <div id="login-container">
       <span class="login-title">Autenticação</span>

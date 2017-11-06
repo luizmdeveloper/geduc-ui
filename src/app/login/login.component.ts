@@ -1,6 +1,7 @@
 import { FormControl } from '@angular/forms';
 import { Component } from '@angular/core';
 import { Http, Response } from '@angular/http';
+import { Router } from '@angular/router';
 
 import { ToastyService } from 'ng2-toasty';
 import { Message } from 'primeng/components/common/api';
@@ -37,8 +38,8 @@ export class LoginComponent {
   private msgs: Message[] = [];
 
   constructor(private _http: Http,
-              private messageService: MessageService) {
-    this.msgs.push({severity: 'error', summary: 'Error Message', detail: 'Ponha essa porra melhor'});
+              private messageService: MessageService,
+              private router: Router) {
   }
 
   logar(login: string, senha: string): Promise<any> {
@@ -49,10 +50,10 @@ export class LoginComponent {
     return this._http.get(this._Url)
           .toPromise()
           .then(response => {
-            if (response.json().result[0].is) {
-              console.log('Usuário não cadastrado');
+            if (response.json().result[0]) {
+              this.router.navigate(['/boletim']);
             }else {
-              console.log(response.json().result[0]);
+              this.msgs.push({severity: 'error', detail: 'Usário e ou senha incorretos'});
             }
           })
           .catch(err => console.log(err));

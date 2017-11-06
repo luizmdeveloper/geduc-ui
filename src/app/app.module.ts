@@ -13,6 +13,12 @@ import { TooltipModule} from 'primeng/components/tooltip/tooltip';
 import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 import { InputMaskModule } from 'primeng/components/inputmask/inputmask';
 import { MessageModule } from 'primeng/components/message/message';
+import { MessagesModule } from 'primeng/components/messages/messages';
+
+/*
+* Imports de services
+*/
+import { MessageService } from 'primeng/components/common/messageservice';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -39,14 +45,14 @@ import { BoletimComponent } from './boletim/boletim.component';
     MessageModule,
     AppRoutingModule,
 
-
     DataTableModule,
     ButtonModule,
     TooltipModule,
     InputTextModule,
-    InputMaskModule
+    InputMaskModule,
+    MessagesModule
   ],
-  providers: [],
+  providers: [ MessageService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
