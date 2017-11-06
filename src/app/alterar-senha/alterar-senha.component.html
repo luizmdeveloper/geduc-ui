@@ -1,0 +1,37 @@
+<div class="container">
+  <p-messages [(value)]="msgs" [hidden]="msgs === []"></p-messages>
+
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <h1>Alterar senha</h1>
+    </div>
+    <form #f="ngForm">
+      <div class="ui-g-12  ui-fluid">
+        <label class="label  label-input">login</label>
+        <input pInputText type="text" ngModel #login="ngModel" name="login" required>
+
+        <app-message-error [control]="login" error="required" message="Informe o login"></app-message-error>
+      </div>
+      <div class="ui-g-12  ui-fluid">
+        <label class="label  label-input">Senha atual</label>
+        <input pInputText type="password" ngModel #atual="ngModel" name="atual" required>
+
+        <app-message-error [control]="atual" error="required" message="Informe o senha atual"></app-message-error>
+      </div>
+      <div class="ui-g-12  ui-fluid">
+        <label class="label  label-input">Nova senha</label>
+        <input pInputText type="password" ngModel #novasenha="ngModel" name="novasenha" required>
+
+        <app-message-error [control]="novasenha" error="required" message="Informe a nova senha"></app-message-error>
+      </div>
+      <div class="ui-g-12  ui-fluid">
+        <label class="label  label-input">Confirmação de senha</label>
+        <input pInputText type="password" ngModel #confirmacaosenha="ngModel" name="confirmacaosenha" required>
+
+        <app-message-error [control]="confirmacaosenha" error="required" message="Informe a confirmação de senha"></app-message-error>
+      </div>
+
+      <button pButton value="submit" label="enviar" [disabled]="f.invalid" (click)="enviar(login.value, atual.value, novasenha.value, confirmacaosenha.value)"></button>
+    </form>
+  </div>
+</div>

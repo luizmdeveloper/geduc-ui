@@ -19,6 +19,7 @@ import { MessagesModule } from 'primeng/components/messages/messages';
 * Imports de services
 */
 import { MessageService } from 'primeng/components/common/messageservice';
+import { ToastyService } from 'ng2-toasty';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -26,6 +27,7 @@ import { LoginComponent } from './login/login.component';
 import { EsquecerSenhaComponent } from './esquecer-senha/esquecer-senha.component';
 import { MessageErrorComponent } from './message-error/message-error.component';
 import { BoletimComponent } from './boletim/boletim.component';
+import { AlterarSenhaComponent } from './alterar-senha/alterar-senha.component';
 
 
 @NgModule({
@@ -35,7 +37,8 @@ import { BoletimComponent } from './boletim/boletim.component';
     LoginComponent,
     EsquecerSenhaComponent,
     MessageErrorComponent,
-    BoletimComponent
+    BoletimComponent,
+    AlterarSenhaComponent
   ],
   imports: [
     BrowserModule,

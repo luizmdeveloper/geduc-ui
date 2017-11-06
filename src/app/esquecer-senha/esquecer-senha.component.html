@@ -2,16 +2,17 @@
 
 <div id="login-body">
   <div id="login-wrapper">
+    <p-messages [(value)]="msgs" [hidden]="msgs === []"></p-messages>
     <img class="logo" src="./assets/logo.png">
     <div id="login-container">
       <form #f="ngForm">
         <p-message severity="info" text="Insira o seu login abaixo e nós iremos enviar-lhe uma nova senha!"></p-message>
         <div class="ui-g ui-fluid">
           <div class="ui-g-12">
-            <input pInputText type="email" placeholder="login" ngModel #email name="email" required [email]="true">
+            <input pInputText type="text" placeholder="login" ngModel #login name="login" required maxlength="11">
           </div>
           <div class="ui-g-12">
-            <button pButton type="submit" label="Enviar" [disabled]="f.invalid" (click)="enviar(email.value)"></button>
+            <button pButton type="submit" label="Enviar" [disabled]="f.invalid" (click)="enviar(login.value)"></button>
             <div class="ui-g-12">
               <a routerLink="/login">Voltar para o login</a>
             </div>
