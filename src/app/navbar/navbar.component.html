@@ -9,8 +9,8 @@
 
     <ul class="navbar__menu" [hidden]="!exibindoMenu">
       <li class="navbar__menu-usuario">Ântônio Alves Vale</li>
-      <li class="navbar__menu-item"><a href="#">Boletim</a></li>
-      <li class="navbar__menu-item"><a href="#">Alterar senha</a></li>
-      <li class="navbar__menu-item"><a href="#">Sair</a></li>
+      <li class="navbar__menu-item"><a href="/">Boletim</a></li>
+      <li class="navbar__menu-item"><a routerLink="/alterar" >Alterar senha</a></li>
+      <li class="navbar__menu-item"><a href="javascript:;" (click)="logout()">Sair</a></li>
     </ul>
   </nav>

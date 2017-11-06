@@ -1,16 +1,18 @@
+<app-navbar></app-navbar>
 <div class="container">
-  <p-messages [(value)]="msgs" [hidden]="msgs === []"></p-messages>
-
   <div class="ui-g">
+    <p-messages [(value)]="msgs" [hidden]="msgs === []"></p-messages>
+
     <div class="ui-g-12">
       <h1>Alterar senha</h1>
     </div>
-    <form #f="ngForm">
+    <form #f="ngForm" autocomplete="off">
       <div class="ui-g-12  ui-fluid">
         <label class="label  label-input">login</label>
-        <input pInputText type="text" ngModel #login="ngModel" name="login" required>
+        <input pInputText type="text" ngModel #login="ngModel" name="login" required minlength="11" maxlength="11">
 
         <app-message-error [control]="login" error="required" message="Informe o login"></app-message-error>
+        <app-message-error [control]="login" error="minlength" message="login deve conter {{login.errors?.minlength?.requiredLength}} numeros"></app-message-error>
       </div>
       <div class="ui-g-12  ui-fluid">
         <label class="label  label-input">Senha atual</label>
@@ -30,7 +32,6 @@
 
         <app-message-error [control]="confirmacaosenha" error="required" message="Informe a confirmação de senha"></app-message-error>
       </div>
-
       <button pButton value="submit" label="enviar" [disabled]="f.invalid" (click)="enviar(login.value, atual.value, novasenha.value, confirmacaosenha.value)"></button>
     </form>
   </div>
