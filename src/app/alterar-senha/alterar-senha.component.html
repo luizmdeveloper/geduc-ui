@@ -1,38 +1,39 @@
 <app-navbar></app-navbar>
 <div class="container">
   <div class="ui-g">
-    <p-messages [(value)]="msgs" [hidden]="msgs === []"></p-messages>
-
+    <div class="ui-g-12">
+      <p-messages [(value)]="msgs" [hidden]="msgs === []"></p-messages>
+    </div>
     <div class="ui-g-12">
       <h1>Alterar senha</h1>
     </div>
     <form #f="ngForm" autocomplete="off">
-      <div class="ui-g-12  ui-fluid">
-        <label class="label  label-input">login</label>
-        <input pInputText type="text" ngModel #login="ngModel" name="login" required minlength="11" maxlength="11">
+      <div class="ui-g-12  ui-md-6  ui-fluid">
+        <label class="label  label-input">login {{cpf}}</label>
+        <input pInputText type="text" value="{{cpf}}" ngModel #cpf="ngModel" name="cpf" required minlength="11" maxlength="11">
 
-        <app-message-error [control]="login" error="required" message="Informe o login"></app-message-error>
-        <app-message-error [control]="login" error="minlength" message="login deve conter {{login.errors?.minlength?.requiredLength}} numeros"></app-message-error>
+        <app-message-error [control]="cpf" error="required" message="Informe o login"></app-message-error>
+        <app-message-error [control]="cpf" error="minlength" message="login deve conter {{login.errors?.minlength?.requiredLength}} numeros"></app-message-error>
       </div>
-      <div class="ui-g-12  ui-fluid">
-        <label class="label  label-input">Senha atual</label>
-        <input pInputText type="password" ngModel #atual="ngModel" name="atual" required>
+      <div class="ui-g-12  ui-md-6  ui-fluid">
+        <label class="label  label-input">Senha atual {{atual}}</label>
+        <input pInputText type="password" value="{{atual}}" ngModel #atual="ngModel" name="atual" required>
 
         <app-message-error [control]="atual" error="required" message="Informe o senha atual"></app-message-error>
       </div>
-      <div class="ui-g-12  ui-fluid">
+      <div class="ui-g-12  ui-md-6  ui-fluid">
         <label class="label  label-input">Nova senha</label>
         <input pInputText type="password" ngModel #novasenha="ngModel" name="novasenha" required>
 
         <app-message-error [control]="novasenha" error="required" message="Informe a nova senha"></app-message-error>
       </div>
-      <div class="ui-g-12  ui-fluid">
+      <div class="ui-g-12  ui-md-6  ui-fluid">
         <label class="label  label-input">Confirmação de senha</label>
         <input pInputText type="password" ngModel #confirmacaosenha="ngModel" name="confirmacaosenha" required>
 
         <app-message-error [control]="confirmacaosenha" error="required" message="Informe a confirmação de senha"></app-message-error>
       </div>
-      <button pButton value="submit" label="enviar" [disabled]="f.invalid" (click)="enviar(login.value, atual.value, novasenha.value, confirmacaosenha.value)"></button>
+      <button pButton value="submit" label="enviar" [disabled]="f.invalid" (click)="enviar(cpf.value, atual.value, novasenha.value, confirmacaosenha.value)"></button>
     </form>
   </div>
 </div>

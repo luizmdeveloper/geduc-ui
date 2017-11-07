@@ -20,6 +20,8 @@ import { MessagesModule } from 'primeng/components/messages/messages';
 */
 import { MessageService } from 'primeng/components/common/messageservice';
 import { ToastyService } from 'ng2-toasty';
+import { LoginService } from './login/login.service';
+import { AuthGuard } from './guards/auth.guard';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -55,7 +57,11 @@ import { AlterarSenhaComponent } from './alterar-senha/alterar-senha.component';
     InputMaskModule,
     MessagesModule
   ],
-  providers: [ MessageService ],
+  providers: [
+    MessageService,
+    LoginService,
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

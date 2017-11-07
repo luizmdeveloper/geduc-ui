@@ -6,27 +6,11 @@ import { Router } from '@angular/router';
 import { ToastyService } from 'ng2-toasty';
 import { Message } from 'primeng/components/common/api';
 import { MessageService } from 'primeng/components/common/messageservice';
+import { LoginService } from './login.service';
 
 import { environment } from './../../environments/environment';
 import { Md5 } from 'ts-md5/dist/md5';
 import 'rxjs/add/operator/toPromise';
-
-export class Parametro {
-  codigo: number;
-  boleteim_impresso: boolean;
-}
-
-export class Aluno {
-  matricula: number;
-  nome: string;
-}
-
-export class Boletim {
-  parametro: Parametro;
-  codigo: number;
-  nome: string;
-  alunos: Aluno[];
-}
 
 @Component({
   selector: 'app-login',
@@ -39,24 +23,22 @@ export class LoginComponent {
 
   constructor(private _http: Http,
               private messageService: MessageService,
-              private router: Router) {
+              private router: Router,
+              private loginService: LoginService) {
   }
 
-  logar(login: string, senha: string): Promise<any> {
-    this._Url = `${environment.apiUrl}` + 'getUsuario/' + `${environment.empresa}` + '/' + `${environment.empresa}` + '/';
-
-    this._Url = this._Url + login + '/' + Md5.hashStr(senha).toString().toUpperCase();
-
-    return this._http.get(this._Url)
-          .toPromise()
-          .then(response => {
-            if (response.json().result[0]) {
-              this.router.navigate(['/boletim']);
-            }else {
-              this.msgs.push({severity: 'error', detail: 'Usário e ou senha incorretos'});
-            }
-          })
-          .catch(err => console.log(err));
+  logar(login: string, senha: string) {
+    this.loginService.login(login, senha)
+      .then( dados => {
+        if (JSON.stringify(dados) === '{}') {
+          this.msgs.push({severity: 'error', detail: 'Usário e ou senha incorretos'});
+        } else {
+          this.router.navigate(['/boletim']);
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
 }
