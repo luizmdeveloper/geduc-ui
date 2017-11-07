@@ -8,6 +8,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class LoginService {
   private _Url: string;
+  private parametro;
   private usuarioAutenticado: boolean;
   private nomeUsuario: string;
   private senhaMd5: string;
@@ -27,10 +28,11 @@ export class LoginService {
             .toPromise()
             .then(response => {
               this.usuarioAutenticado = true;
-              this.nomeUsuario = response.json().result[0].nome;
-              this.senhaMd5 = response.json().result[0].senha;
-              this.cpf = response.json().result[0].login;
-              this.alunos = response.json().result[0].alunos;
+              this.parametro          = response.json().result[0].parametro;
+              this.nomeUsuario        = response.json().result[0].nome;
+              this.senhaMd5           = response.json().result[0].senha;
+              this.cpf                = response.json().result[0].login;
+              this.alunos             = response.json().result[0].alunos;
               return response.json().result[0];
             })
             .catch(error => error.json());
@@ -52,7 +54,12 @@ export class LoginService {
     return this.cpf;
   }
 
-  getAlunos(): any {
+  getAlunos(): any[] {
     return this.alunos;
   }
+
+  getParametro(): any {
+    return this.parametro;
+  }
+
 }

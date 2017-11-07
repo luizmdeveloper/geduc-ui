@@ -12,7 +12,7 @@
         <p-column field="nome" header="Aluno"></p-column>
         <p-column header="Imprimir" styleClass="col-acoes">
           <ng-template let-aluno="rowData" pTemplate="body">
-            <button type="button" pButton [disabled]="!imprimir" (click)="imprimirBoletim(aluno)" icon="fa-print"></button>
+            <button type="button" pButton [disabled]="!parametro.boletim_liberado" (click)="imprimirBoletim(aluno)" icon="fa-print"></button>
           </ng-template>
         </p-column>
       </p-dataTable>

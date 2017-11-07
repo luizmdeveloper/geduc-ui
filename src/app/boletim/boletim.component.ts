@@ -16,14 +16,15 @@ export class BoletimComponent implements OnInit {
   constructor(private http: Http, private route: ActivatedRoute, private loginService: LoginService) {
   }
 
-  private imprimir: boolean = true;
+  private parametro: any;
   private alunos: any[];
   private aluno: any;
   private msgs: Message[] = [];
 
 
   ngOnInit() {
-    this.alunos = this.loginService.getAlunos();
+    this.parametro = this.loginService.getParametro();
+    this.alunos    = this.loginService.getAlunos();
   }
 
   imprimirBoletim(aluno: any) {
