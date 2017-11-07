@@ -1,21 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { environment } from './../../environments/environment';
+import { Http, Response } from '@angular/http';
+import { LoginService } from '../login/login.service';
+import { Message } from 'primeng/components/common/api';
 
-export class Parametro {
-  ano: number;
-  boletim_liberado: boolean;
-}
-
-export class Aluno {
-  matricula: number;
-  nome: string;
-}
-
-export class Boletim {
-  parametro: Parametro;
-  codigo: number;
-  nome: string;
-  alunos: Array<Aluno>;
-}
 
 @Component({
   selector: 'app-boletim',
@@ -24,19 +13,37 @@ export class Boletim {
 })
 export class BoletimComponent implements OnInit {
 
-  matriculaImprimir = 0;
-  imprimir = true;
+  constructor(private http: Http, private route: ActivatedRoute, private loginService: LoginService) {
+  }
 
-  alunos: Aluno[];
-  aluno: Aluno;
+  private imprimir: boolean = true;
+  private alunos: any[];
+  private aluno: any;
+  private msgs: Message[] = [];
+
 
   ngOnInit() {
-    this.alunos = [{matricula: 87557, nome: 'ANTONIO PAULO DA COSTA VALE'}];
+    this.alunos = this.loginService.getAlunos();
   }
 
-  imprimirBoletim(aluno: Aluno) {
+  imprimirBoletim(aluno: any) {
     this.aluno = aluno;
-    console.log(this.aluno);
-  }
+    let url    = `${environment.apiUrl}` + 'imprimirBoletim/' + `${environment.empresa}` + '/' + `${environment.empresa}` + '/' + 2017 + '/' + aluno.matricula;
 
+    this.http.get(url)
+    .toPromise()
+    .then(response => {
+      let result = response.json().result[0];
+
+      if (result) {
+        if (result.imprimir) {
+          window.open('../../assets/boletim/' + this.aluno.matricula + '.PDF', '_blank')
+        }
+      }
+      else {
+        this.msgs.push({severity: 'error', summary: 'Erro ao imprimir boletim'});
+      }
+    })
+    .catch(err => this.msgs.push({severity: 'error',  summary: 'Erro ao imprimir boletim <br/>', detail: err}));
+  }
 }

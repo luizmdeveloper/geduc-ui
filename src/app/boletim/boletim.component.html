@@ -3,8 +3,10 @@
   <div class="ui-g">
     <div class="ui-g-12">
       <h1>Boletim</h1>
+      <p-messages [(value)]="msgs" [hidden]="msgs === []"></p-messages>
     </div>
     <div class="ui-g-12">
+      <iframe id="printf" name="printf" src='../../assets/boletim/87557.PDF' style="display:none;"></iframe>
       <p-dataTable [value]="alunos" [responsive]="true">
         <p-column field="matricula" header="Matrícula" styleClass="col-matricula"></p-column>
         <p-column field="nome" header="Aluno"></p-column>
