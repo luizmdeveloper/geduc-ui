@@ -14,18 +14,17 @@ import { environment } from './../../environments/environment';
 })
 export class BoletimComponent implements OnInit {
 
+  parametro: any;
+  alunos: any[];
+  aluno: any;
+  msgs: Message[] = [];
+
   constructor(private http: Http,
               private route: ActivatedRoute,
               private loginService: LoginService,
               private title: Title) {
    this.title.setTitle('Geduc - boletim');
   }
-
-  private parametro: any;
-  private alunos: any[];
-  private aluno: any;
-  private msgs: Message[] = [];
-
 
   ngOnInit() {
     this.parametro = this.loginService.getParametro();

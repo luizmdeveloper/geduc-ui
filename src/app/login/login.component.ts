@@ -19,8 +19,8 @@ import 'rxjs/add/operator/toPromise';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  private _Url: string;
-  private msgs: Message[] = [];
+
+  msgs: Message[] = [];
 
   constructor(private _http: Http,
               private messageService: MessageService,

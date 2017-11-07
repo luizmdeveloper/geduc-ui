@@ -10,10 +10,13 @@ import { LoginService } from '../login/login.service';
 })
 export class NavbarComponent implements OnInit {
 
-  private nomeUsuario: string;
+  nomeUsuario: string;
+  exibindoMenu: boolean;
 
   constructor(private router: Router,
-              private loginService: LoginService) {}
+              private loginService: LoginService) {
+    this.exibindoMenu = false;
+  }
 
   ngOnInit() {
     this.nomeUsuario = this.loginService.getNomeUsuario();

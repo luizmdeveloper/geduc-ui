@@ -15,8 +15,8 @@ import 'rxjs/add/operator/toPromise';
   styleUrls: ['./esquecer-senha.component.css']
 })
 export class EsquecerSenhaComponent {
-  private _Url: string;
-  private msgs: Message[] = [];
+  _Url: string;
+  msgs: Message[] = [];
 
   constructor(private _http: Http,
               private messageService: MessageService,

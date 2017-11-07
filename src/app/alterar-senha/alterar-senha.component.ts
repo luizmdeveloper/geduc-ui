@@ -24,11 +24,11 @@ export class Usuario {
   styleUrls: ['./alterar-senha.component.css']
 })
 export class AlterarSenhaComponent implements OnInit {
-  private _Url: string;
-  private msgs: Message[] = [];
-  private cpf: string;
-  private atual: string;
-  private usuario: Usuario = new Usuario();
+  _Url: string;
+  msgs: Message[] = [];
+  cpf: string;
+  atual: string;
+  usuario: Usuario = new Usuario();
 
   constructor(private _http: Http,
               private messageService: MessageService,
@@ -83,15 +83,15 @@ export class AlterarSenhaComponent implements OnInit {
       this._http.get(this._Url)
                .toPromise()
                .then(response => {
-                     if (response.json().result[0].alterar_senha) {
-                      this.msgs.push({severity: 'success', detail: 'Sua senha foi alterada com sucesso'});
-                     }else {
-                       this.msgs.push({severity: 'error', detail: 'Ops! ocorreu um erro ao alterar sua senha, aguarde e tente mais tarde novamente'});
-                     }
-                  })
-                  .catch(err => {
-                    this.msgs.push({severity: 'error', detail: err.json().error});
-                  });
+                  if (response.json().result[0].alterar_senha) {
+                    this.msgs.push({severity: 'success', detail: 'Sua senha foi alterada com sucesso'});
+                  }else {
+                    this.msgs.push({severity: 'error', detail: 'Ops! ocorreu um erro ao alterar sua senha, aguarde e tente mais tarde novamente'});
+                  }
+                })
+                .catch(err => {
+                  this.msgs.push({severity: 'error', detail: err.json().error});
+                });
     }
   }
 }
