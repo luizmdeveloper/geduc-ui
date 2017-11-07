@@ -31,7 +31,6 @@ export class LoginService {
               this.senhaMd5 = response.json().result[0].senha;
               this.cpf = response.json().result[0].login;
               this.alunos = response.json().result[0].alunos;
-              console.log(this.alunos);
               return response.json().result[0];
             })
             .catch(error => error.json());
