@@ -2,6 +2,7 @@ import { FormControl } from '@angular/forms';
 import { Component } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 import { ToastyService } from 'ng2-toasty';
 import { Message } from 'primeng/components/common/api';
@@ -24,7 +25,9 @@ export class LoginComponent {
   constructor(private _http: Http,
               private messageService: MessageService,
               private router: Router,
-              private loginService: LoginService) {
+              private loginService: LoginService,
+              private title: Title) {
+    this.title.setTitle('Geduc - login');
   }
 
   logar(login: string, senha: string) {

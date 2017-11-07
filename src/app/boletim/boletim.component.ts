@@ -1,10 +1,11 @@
 import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { environment } from './../../environments/environment';
 import { Http, Response } from '@angular/http';
-import { LoginService } from '../login/login.service';
 import { Message } from 'primeng/components/common/api';
+import { Title } from '@angular/platform-browser';
 
+import { LoginService } from '../login/login.service';
+import { environment } from './../../environments/environment';
 
 @Component({
   selector: 'app-boletim',
@@ -13,7 +14,11 @@ import { Message } from 'primeng/components/common/api';
 })
 export class BoletimComponent implements OnInit {
 
-  constructor(private http: Http, private route: ActivatedRoute, private loginService: LoginService) {
+  constructor(private http: Http,
+              private route: ActivatedRoute,
+              private loginService: LoginService,
+              private title: Title) {
+   this.title.setTitle('Geduc - boletim');
   }
 
   private parametro: any;

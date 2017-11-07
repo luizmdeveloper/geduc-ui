@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Http, Response } from '@angular/http';
+import { Title } from '@angular/platform-browser';
 
 import { Message } from 'primeng/components/common/api';
 import { MessageService } from 'primeng/components/common/messageservice';
@@ -18,7 +19,10 @@ export class EsquecerSenhaComponent {
   private msgs: Message[] = [];
 
   constructor(private _http: Http,
-              private messageService: MessageService) {}
+              private messageService: MessageService,
+              private title: Title) {
+   this.title.setTitle('Geduc - esqueci minha senha');
+  }
 
   enviar(email: string): Promise<any> {
     this.msgs = [];

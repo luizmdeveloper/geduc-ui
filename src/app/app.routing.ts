@@ -8,7 +8,7 @@ import { AlterarSenhaComponent } from './alterar-senha/alterar-senha.component';
 import { AuthGuard } from './guards/auth.guard';
 
 const APP_ROUTES: Routes = [
-  { path: 'login', component : LoginComponent },
+  { path: '', component : LoginComponent },
   { path: 'esquecer', component : EsquecerSenhaComponent },
   { path: 'boletim', component : BoletimComponent, canActivate : [AuthGuard] },
   { path: 'alterar', component : AlterarSenhaComponent, canActivate : [AuthGuard] }
