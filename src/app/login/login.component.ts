@@ -31,17 +31,32 @@ export class LoginComponent {
   }
 
   logar(login: string, senha: string) {
-    this.loginService.login(login, senha)
-      .then( dados => {
-        if (JSON.stringify(dados) === '{}') {
-          this.msgs.push({severity: 'error', detail: 'Usário e ou senha incorretos'});
-        } else {
-          this.router.navigate(['/boletim']);
-        }
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
+    this.msgs = [];
 
+    if (login.trim() === '') {
+      this.msgs.push({severity: 'error', detail: '- Login não informado'});
+    }
+
+    if (senha.trim() === '') {
+      this.msgs.push({severity: 'error', detail: '- Senha não informado'});
+    }
+
+    if (this.msgs.length === 0) {
+      this.loginService.login(login, senha)
+        .then( dados => {
+          if (JSON.stringify(dados) === '{}') {
+            this.msgs.push({severity: 'error', detail: 'Usário e ou senha incorretos'});
+          } else {
+            this.router.navigate(['/boletim']);
+          }
+        })
+        .catch(error => {
+          if (error.status === 0) {
+            this.msgs.push({severity: 'error', detail: 'Erro ao conectar com servidor, tente novamente mais tarde'});
+          }else {
+            this.msgs.push({severity: 'error', detail: error.json().error});
+          }
+        });
+    }
+  }
 }

@@ -39,7 +39,11 @@ export class EsquecerSenhaComponent {
             }
           })
           .catch(err => {
-            this.msgs.push({severity: 'error', detail: err.json().error});
+            if (err.status === 0) {
+              this.msgs.push({severity: 'error', detail: 'Erro ao conectar com servidor, tente novamente mais tarde'});
+            }else {
+              this.msgs.push({severity: 'error', detail: err.json().error});
+            }
           });
   }
 

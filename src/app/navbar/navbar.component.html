@@ -1,16 +1,16 @@
 <nav class="navbar">
-    <div class="container">
-      <div class="ui-g">
-        <div class="ui-g-12">
-          <a href="javascript:;" class="navbar-toggle" (click)="exibindoMenu = !exibindoMenu"> <i class="fa fa-bars"></i></a>
-        </div>
+  <div class="container">
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <a href="javascript:;" class="navbar-toggle" (click)="exibindoMenu = !exibindoMenu"> <i class="fa fa-bars"></i></a>
       </div>
     </div>
+  </div>
 
-    <ul class="navbar__menu" [hidden]="!exibindoMenu">
-      <li class="navbar__menu-usuario">{{nomeUsuario}}</li>
-      <li class="navbar__menu-item"><a routerLink="/boletim">Boletim</a></li>
-      <li class="navbar__menu-item"><a routerLink="/alterar">Alterar senha</a></li>
-      <li class="navbar__menu-item"><a href="javascript:;" (click)="logout()">Sair</a></li>
-    </ul>
-  </nav>
+  <ul class="navbar__menu" [hidden]="!exibindoMenu">
+    <li class="navbar__menu-usuario">{{nomeUsuario}}</li>
+    <li class="navbar__menu-item"><a routerLink="/boletim">Boletim</a></li>
+    <li class="navbar__menu-item"><a routerLink="/alterar">Alterar senha</a></li>
+    <li class="navbar__menu-item"><a href="javascript:;" (click)="logout()">Sair</a></li>
+  </ul>
+</nav>

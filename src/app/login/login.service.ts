@@ -7,7 +7,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class LoginService {
-  private _Url: string;
+  private _Url = `${environment.apiUrl}` + 'getUsuario/' + `${environment.empresa}` + '/' + `${environment.empresa}` + '/';
   private parametro;
   private usuarioAutenticado: boolean;
   private nomeUsuario: string;
@@ -16,7 +16,6 @@ export class LoginService {
   private alunos = [];
 
   constructor(private _http: Http) {
-    this._Url = `${environment.apiUrl}` + 'getUsuario/' + `${environment.empresa}` + '/' + `${environment.empresa}` + '/';
     this.usuarioAutenticado = false;
   }
 
@@ -34,8 +33,7 @@ export class LoginService {
               this.cpf                = response.json().result[0].login;
               this.alunos             = response.json().result[0].alunos;
               return response.json().result[0];
-            })
-            .catch(error => error.json());
+            });
   }
 
   isAuthenticated(): boolean {
