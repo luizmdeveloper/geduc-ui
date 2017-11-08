@@ -10,7 +10,7 @@ export class AppComponent {
 
   constructor(private router: Router) {}
 
-  exibirMenu() {
-    return (this.router.url !== '/login');
+  exibirBarraMenu() {
+    return ((this.router.url === '/boletim') || (this.router.url === '/alterar'));
   }
 }

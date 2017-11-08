@@ -16,12 +16,11 @@ export class LoginService {
   private alunos = [];
 
   constructor(private _http: Http) {
-    this._Url = `${environment.apiUrl}` + 'getUsuario/' + `${environment.empresa}` + '/' + `${environment.empresa}` + '/';
     this.usuarioAutenticado = false;
   }
 
   login(login: string, senha: string): Promise<any> {
-
+    this._Url = `${environment.apiUrl}` + 'getUsuario/' + `${environment.empresa}` + '/' + `${environment.empresa}` + '/';
     this._Url = this._Url + login + '/' + Md5.hashStr(senha).toString().toUpperCase();
 
     return this._http.get(this._Url)
@@ -34,8 +33,7 @@ export class LoginService {
               this.cpf                = response.json().result[0].login;
               this.alunos             = response.json().result[0].alunos;
               return response.json().result[0];
-            })
-            .catch(error => error.json());
+            });
   }
 
   isAuthenticated(): boolean {
