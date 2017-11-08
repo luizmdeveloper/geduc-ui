@@ -9,8 +9,8 @@
 
   <ul class="navbar__menu" [hidden]="!exibindoMenu">
     <li class="navbar__menu-usuario">{{nomeUsuario}}</li>
-    <li class="navbar__menu-item"><a routerLink="/boletim">Boletim</a></li>
-    <li class="navbar__menu-item"><a routerLink="/alterar">Alterar senha</a></li>
+    <li class="navbar__menu-item"><a routerLink="/boletim" (click)="exibindoMenu = !exibindoMenu">Boletim</a></li>
+    <li class="navbar__menu-item"><a routerLink="/alterar" (click)="exibindoMenu = !exibindoMenu">Alterar senha</a></li>
     <li class="navbar__menu-item"><a href="javascript:;" (click)="logout()">Sair</a></li>
   </ul>
 </nav>

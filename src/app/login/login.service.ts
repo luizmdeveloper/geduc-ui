@@ -7,7 +7,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class LoginService {
-  private _Url = `${environment.apiUrl}` + 'getUsuario/' + `${environment.empresa}` + '/' + `${environment.empresa}` + '/';
+  private _Url: string;
   private parametro;
   private usuarioAutenticado: boolean;
   private nomeUsuario: string;
@@ -20,7 +20,7 @@ export class LoginService {
   }
 
   login(login: string, senha: string): Promise<any> {
-
+    this._Url = `${environment.apiUrl}` + 'getUsuario/' + `${environment.empresa}` + '/' + `${environment.empresa}` + '/';
     this._Url = this._Url + login + '/' + Md5.hashStr(senha).toString().toUpperCase();
 
     return this._http.get(this._Url)
