@@ -13,6 +13,11 @@ import { environment } from './../../environments/environment';
 import { Md5 } from 'ts-md5/dist/md5';
 import 'rxjs/add/operator/toPromise';
 
+export class Login {
+  cpf: string;
+  senha: string;
+}
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -21,6 +26,7 @@ import 'rxjs/add/operator/toPromise';
 export class LoginComponent {
 
   msgs: Message[] = [];
+  login = new Login();
 
   constructor(private _http: Http,
               private messageService: MessageService,
@@ -28,35 +34,37 @@ export class LoginComponent {
               private loginService: LoginService,
               private title: Title) {
     this.title.setTitle('Geduc - login');
+    this.login.cpf   = '';
+    this.login.senha = '';
   }
 
-  logar(login: string, senha: string) {
+  logar(form: FormControl) {
     this.msgs = [];
 
-    if (login.trim() === '') {
+    if (this.login.cpf.trim() === '') {
       this.msgs.push({severity: 'error', detail: '- Login não informado'});
     }
 
-    if (senha.trim() === '') {
+    if (this.login.senha.trim() === '') {
       this.msgs.push({severity: 'error', detail: '- Senha não informado'});
     }
 
     if (this.msgs.length === 0) {
-      this.loginService.login(login, senha)
-        .then( dados => {
-          if (JSON.stringify(dados) === '{}') {
-            this.msgs.push({severity: 'error', detail: 'Usário e ou senha incorretos'});
-          } else {
-            this.router.navigate(['/boletim']);
-          }
-        })
-        .catch(error => {
-          if (error.status === 0) {
-            this.msgs.push({severity: 'error', detail: 'Erro ao conectar com servidor, tente novamente mais tarde'});
-          }else {
-            this.msgs.push({severity: 'error', detail: error.json().error});
-          }
-        });
+      this.loginService.login(this.login.cpf, this.login.senha)
+            .then( dados => {
+              if (JSON.stringify(dados) === '{}') {
+                this.msgs.push({severity: 'error', detail: 'Usário e ou senha incorretos'});
+              } else {
+                this.router.navigate(['/boletim']);
+              }
+            })
+            .catch(error => {
+              if (error.status === 0) {
+                this.msgs.push({severity: 'error', detail: 'Erro ao conectar com servidor, tente novamente mais tarde'});
+              }else {
+                this.msgs.push({severity: 'error', detail: error.json().error});
+              }
+            });
     }
   }
 }
