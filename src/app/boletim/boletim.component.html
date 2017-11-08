@@ -2,6 +2,7 @@
   <div class="ui-g">
     <div class="ui-g-12">
       <h1>Boletim</h1>
+      <h2>Responsável: {{responsavel}}</h2>
       <p-messages [(value)]="msgs" [hidden]="msgs === []"></p-messages>
     </div>
     <div class="ui-g-12">
@@ -15,5 +16,7 @@
           </ng-template>
         </p-column>
       </p-dataTable>
+
+      <h3>{{mensagemImprimir}}</h3>
     </div>
 </div>

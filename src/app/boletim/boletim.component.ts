@@ -18,6 +18,8 @@ export class BoletimComponent implements OnInit {
   alunos: any[];
   aluno: any;
   msgs: Message[] = [];
+  responsavel: string;
+  mensagemImprimir: String;
 
   constructor(private http: Http,
               private route: ActivatedRoute,
@@ -27,8 +29,14 @@ export class BoletimComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.parametro = this.loginService.getParametro();
-    this.alunos    = this.loginService.getAlunos();
+    this.parametro   = this.loginService.getParametro();
+    this.alunos      = this.loginService.getAlunos();
+    this.responsavel = this.loginService.getNomeUsuario();
+
+    if (this.parametro.boletim_liberado)
+      this.mensagemImprimir = '';
+    else
+      this.mensagemImprimir = 'Obs: Boletim não liberado pela secretária.';
   }
 
   imprimirBoletim(aluno: any) {
@@ -42,7 +50,7 @@ export class BoletimComponent implements OnInit {
 
       if (result) {
         if (result.imprimir) {
-          window.open('../../assets/boletim/' + this.aluno.matricula + '.PDF', '_blank')
+          window.open('../../geduc/assets/boletim/' + this.aluno.matricula + '.PDF', '_blank')
         }
       }
       else {

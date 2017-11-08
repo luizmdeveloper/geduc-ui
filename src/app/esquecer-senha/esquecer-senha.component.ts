@@ -48,7 +48,7 @@ export class EsquecerSenhaComponent {
               if (response.json().result[0].recuperar_senha) {
                 this.msgs.push({severity: 'success', detail: 'Para continuar, acesse seu email:' + response.json().result[0].email + '. Verifique se foi enviando um e-mail com uma nova senha'});
               }else {
-                this.msgs.push({severity: 'error', detail: 'Login não encontrado'});
+                this.msgs.push({severity: 'error', detail: response.json().result[0].erro});
               }
             })
             .catch(err => {
