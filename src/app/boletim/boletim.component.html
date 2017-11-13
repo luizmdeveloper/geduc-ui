@@ -10,13 +10,12 @@
       <p-dataTable [value]="alunos" [responsive]="true">
         <p-column field="matricula" header="Matrícula" styleClass="col-matricula"></p-column>
         <p-column field="nome" header="Aluno"></p-column>
+        <p-column field="informacao_boletim" header="Boletim" styleClass="col-boletim"></p-column>
         <p-column header="Imprimir" styleClass="col-acoes">
           <ng-template let-aluno="rowData" pTemplate="body">
-            <button type="button" pButton [disabled]="!parametro.boletim_liberado" (click)="imprimirBoletim(aluno)" icon="fa-print"></button>
+            <button type="button" pButton [disabled]="!aluno.boletim_liberado" (click)="imprimirBoletim(aluno)" icon="fa-print"></button>
           </ng-template>
         </p-column>
       </p-dataTable>
-
-      <h3>{{mensagemImprimir}}</h3>
     </div>
 </div>

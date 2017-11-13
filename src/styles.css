@@ -39,13 +39,17 @@ a:hover, a:focus {
 */
 .col-acoes{
   width: 90px;
-
   text-align: center;
 }
 
+
 .col-matricula{
   width: 100px;
+  text-align: center;
+}
 
+.col-boletim{
+  width: 150px;
   text-align: center;
 }
 

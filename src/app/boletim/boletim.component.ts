@@ -19,7 +19,7 @@ export class BoletimComponent implements OnInit {
   aluno: any;
   msgs: Message[] = [];
   responsavel: string;
-  mensagemImprimir: String;
+  styleBoletim: string = 'col-red';
 
   constructor(private http: Http,
               private route: ActivatedRoute,
@@ -32,11 +32,6 @@ export class BoletimComponent implements OnInit {
     this.parametro   = this.loginService.getParametro();
     this.alunos      = this.loginService.getAlunos();
     this.responsavel = this.loginService.getNomeUsuario();
-
-    if (this.parametro.boletim_liberado)
-      this.mensagemImprimir = '';
-    else
-      this.mensagemImprimir = 'Obs: Boletim não liberado pela secretária.';
   }
 
   imprimirBoletim(aluno: any) {
