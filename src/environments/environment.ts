@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://192.168.254.34:1024/datasnap/rest/TSMGeduc/',
+  apiUrl: 'http://domboscopetrolina.ddns.net:49901/datasnap/rest/TSMGeduc/',
   empresa: '1',
   filial: '1'
 };
